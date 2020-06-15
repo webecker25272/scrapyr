@@ -1,3 +1,4 @@
+from scrapyr.models import User
 from flask import Flask
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
@@ -19,5 +20,11 @@ conn = engine.connect()
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 login_manager.init_app(app)
+
+#User login lookup
+@login_manager.user_loader
+def load_user(user_name):
+    return User.query.get(user_name)
+    #return User.query.get(int(user_id))
 
 from scrapyr import routes
