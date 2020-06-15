@@ -4,7 +4,7 @@ from flask import flash, jsonify, redirect, render_template, request, session, u
 from flask_login import current_user, login_required, login_user, logout_user
 from pandas import read_excel
 from werkzeug.utils import secure_filename
-from scrapyr import app, bcrypt, db
+from scrapyr import app, bcrypt, db, login_manager
 from scrapyr.auth import *
 from scrapyr.forms import LoginForm, UploadForm
 from scrapyr.models import User
