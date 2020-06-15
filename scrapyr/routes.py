@@ -8,7 +8,6 @@ def index():
     return redirect(url_for('adhoc'))
 
 @app.route('/historical')
-
 def historical():
     return 'test'
 
