@@ -3,4 +3,4 @@ from scrapyr import app
 
 @app.route("/")
 def home():
-    return 'test'
+    return render_template('adhoc.html')
