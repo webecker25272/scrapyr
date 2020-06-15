@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+
+{% block plotly %}<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+   <small>As of {{ as_of_date}}</small>
+   <br><br>
+   <!--THIS WEEK-->
+	<div class="row" style="background-color: #F8F9fa;">
+		<div class="col-md-6">
+         <h2 style="font-weight: 200; color: black; margin-top: 10px;">This week</h2>
+         <h5 style="font-weight: 200; ">{{last_sunday}} - {{this_saturday}}</h6>
+            <hr style="margin-right: 75px;">
+         <ul class="list-unstyled" style="font-size: x-large; font-weight: 200; color: black; margin-left: 20px;">
+            <li style="margin-bottom: 10px;" ><b>{{countTW}}</b> will move to the next past-due bucket.</li>
+            <li style="margin-bottom: 10px;">Total of <b>${{sumTW}}</b> in past-due balances.</li>
+            <li style="margin-bottom: 10px;">Biggest invoice is <b>${{maxTW}}</b>:</li>
+               <ul>
+                  <li style="margin-bottom: 10px; font-size: large;"><b>{{ docTW }}</b> at {{ docCompanyTW }}</li>
+               </ul>
+            <li style="margin-bottom: 5px;">Company with highest dollar amount:</li>
+               <ul>
+                  <li style="margin-bottom: 10px; font-size: large;"><b>{{sumDueCompanyNameTW}}</b> (${{sumMaxDueByCompanyTW}} past-due)</li>
+               </ul>
+            <li style="margin-bottom: 5px">Company with most invoices:</li>
+               <ul>
+                  <li style="margin-bottom: 10px; font-size: large;"><b>{{countDueCompanyNameTW}}</b> ({{countMaxDueByCompanyTW}} past-due)</li>
+               </ul>
+         </ul>
+      </div>
+		<div class="col-md-6">         
+         {{ divTW|safe }}
+		</div>
+   </div>
+   <br>
+   <!--NEXT WEEK-->
+   <div class="row" style="background-color: #F8F9fa;">
+      <div class="col-md-6">
+         <h2 style="font-weight: 200; color: black; margin-top: 10px;">Next week</h2>
+         <h5 style="font-weight: 200; ">{{next_sunday}} - {{next_saturday}}</h6>
+            <hr style="margin-right: 75px;">
+         <ul class="list-unstyled" style="font-size: x-large; font-weight: 200; color: black; margin-left: 20px;">
+            <li style="margin-bottom: 10px;" ><b>{{countNW}}</b> will move to the next past-due bucket.</li>
+            <li style="margin-bottom: 10px;">Total of <b>${{sumNW}}</b> in past-due balances.</li>
+            <li style="margin-bottom: 10px;">Biggest invoice is <b>${{maxNW}}</b>:</li>
+               <ul>
+                  <li style="margin-bottom: 10px; font-size: large;"><b>{{ docNW }}</b> at {{ docCompanyNW }}</li>
+               </ul>
+            <li style="margin-bottom: 5px;">Company with highest dollar amount:</li>
+               <ul>
+                  <li style="margin-bottom: 10px; font-size: large;"><b>{{sumDueCompanyNameNW}}</b> (${{sumMaxDueByCompanyNW}} past-due)</li>
+               </ul>
+            <li style="margin-bottom: 5px">Company with most invoices:</li>
+               <ul>
+                  <li style="margin-bottom: 10px; font-size: large;"><b>{{countDueCompanyNameNW}}</b> ({{countMaxDueByCompanyNW}} past-due)</li>
+               </ul>
+         </ul>
+      </div>
+      <div class="col-md-6">         
+         {{ divNW|safe }}
+      </div>
+   </div>
+
+
+
+
+   <br><br>
+
+   <!--AT RISK GRAPH-->
+	<div class="row">
+		<div class="col-md-12">
+         <h2 style="font-weight: 200; color: black;">Invoices at Risk</h2>
+         <h6 style="font-weight: 200;">At risk defined as less than 10 days away from moving to the next past-due bucket.</h6>
+         {{ divAtRisk|safe }}
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

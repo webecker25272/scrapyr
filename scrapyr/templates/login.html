@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<br>
+<div class="row">
+    <!--Empty column size 4-->
+    <div class="col-md-4"></div>
+
+    <!--Contains login form-->
+    <div class="col-md-4">
+        <form method="POST" action="">
+            {{ login_form.hidden_tag() }}
+                <legend class="border-bottom mb-4">Log in to see historical data</legend>
+                <div class="form-group">
+                    {% if login_form.username.errors %}
+                        {{ login_form.username(class="form-control form-control-sm is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in login_form.username.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ login_form.username(class="form-control form-control-sm", placeholder="username") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {% if login_form.password.errors %}
+                        {{ login_form.password(class="form-control form-control-sm is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in login_form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ login_form.password(class="form-control form-control-sm", placeholder="password") }}
+                    {% endif %}
+                </div>
+            <div class="form-group">
+                {{ login_form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+    <!--Empty column size 4-->
+    <div class="col-md-4"></div>
+</div row>
+
+{% endblock content %}
