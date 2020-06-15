@@ -1,7 +1,21 @@
+from flask import flash, redirect, url_for
+from scrapyr.models import User
 from flask_wtf import FlaskForm
 from wtforms import (BooleanField, FileField, PasswordField, StringField, SubmitField)
 from wtforms.validators import DataRequired  # , FileRequired, FileAllowed
+from . import login_manager
 
+@login_manager.user_loader
+def load_user(user_id):
+    try:
+        return User.query.get(user_id)
+    except:
+        return None
+
+@login_manager.unauthorized_handler
+def unauthorized():
+    flash('You must be logged in to view that page.', 'warning')
+    return redirect(url_for('login'))
 
 class LoginForm(FlaskForm):
     username = StringField('username', validators=[DataRequired()] )
