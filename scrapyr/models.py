@@ -4,8 +4,9 @@ from scrapyr import db, app, login_manager, engine
 
 #User login lookup
 @login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
+def load_user(user_name):
+    return User.query.get(user_name)
+    #return User.query.get(int(user_id))
 
 #User database table
 class User(db.Model, UserMixin):
