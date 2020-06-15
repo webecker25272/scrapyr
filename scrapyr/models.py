@@ -1,6 +1,6 @@
 from flask_login import UserMixin
 from sqlalchemy import create_engine
-from scraper import db, app, login_manager, engine
+from scrapyr import db, app, login_manager, engine
 
 #User login lookup
 @login_manager.user_loader
