@@ -1,6 +1,11 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from scrapyr import app
 from scrapyr.forms import UploadForm
+
+@app.route('/')
+def index():
+    return redirect(url_for('adhoc'))
+
 
 @app.route('/adhoc', methods = ['GET','POST'])
 def adhoc():
