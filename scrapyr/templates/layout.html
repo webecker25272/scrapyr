@@ -30,7 +30,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarToggle">
                   <div class="navbar-nav mr-auto">             
-                    <!--a class="nav-item nav-link" href="{{ url_for('historical') }}">Historical</a-->
+                    <a class="nav-item nav-link" href="{{ url_for('historical') }}">Historical</a>
                     <a class="nav-item nav-link" href="{{ url_for('adhoc') }}">Ad-hoc</a>
                     {% if temp_exists %}<a class="nav-item nav-link" href="/export">View Report</a>{% endif %}
                 </div>
