@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from scrapyr import app
 from scrapyr.forms import UploadForm
+from scrapyr import auth
 
 @app.route('/')
 def index():
