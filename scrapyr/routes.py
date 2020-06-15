@@ -5,7 +5,7 @@ from flask_login import current_user, login_required, login_user, logout_user
 from pandas import read_excel
 from werkzeug.utils import secure_filename
 from scrapyr import app, bcrypt, db
-from scrapyr import auth
+from scrapyr.auth import *
 from scrapyr.forms import LoginForm, UploadForm
 from scrapyr.models import User
 from scrapyr.processing import generate_tabnonsum, generate_tabsum, write_to_excel, word_dicts, graph_at_risk, graph_this_week, graph_next_week
@@ -34,6 +34,7 @@ def login():
             flash('Invalid username/password combination', 'danger')
             return redirect(url_for('login'))
     return render_template('login.html', login_form = login_form)
+
 
 @app.route('/logout')
 def logout():

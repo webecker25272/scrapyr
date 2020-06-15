@@ -13,9 +13,9 @@ def load_user(user_id):
     except:
         return None
 
+
 @login_manager.request_loader
 def load_user_from_request(request):
-
     auth_str = request.headers.get('Authorization')
     token = auth_str.split(' ')[1] if auth_str else ''
     if token:
