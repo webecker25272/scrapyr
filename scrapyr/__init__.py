@@ -12,6 +12,8 @@ app = Flask(__name__)
 # SQL Alchemy
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'site.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['CSRF_ENABLED'] = True
+app.config['CSRF_SESSION_KEY'] = "alksdjhfkasljdhf"
 db = SQLAlchemy(app)
 engine = create_engine(app.config['SQLALCHEMY_DATABASE_URI'], connect_args={'check_same_thread': False}, echo = False)
 conn = engine.connect()
