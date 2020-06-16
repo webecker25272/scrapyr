@@ -6,7 +6,7 @@ from pandas import read_excel
 from werkzeug.utils import secure_filename
 from scrapyr import app, bcrypt, db, login_manager
 from scrapyr.forms import LoginForm, UploadForm
-from scrapyr.models import User
+from scrapyr import User
 from scrapyr.processing import generate_tabnonsum, generate_tabsum, write_to_excel, word_dicts, graph_at_risk, graph_this_week, graph_next_week
 
 

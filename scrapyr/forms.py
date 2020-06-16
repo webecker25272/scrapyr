@@ -1,5 +1,5 @@
 from flask import flash, redirect, url_for
-from scrapyr.models import User
+from scrapyr import User
 from flask_wtf import FlaskForm
 from wtforms import (BooleanField, FileField, PasswordField, StringField, SubmitField)
 from wtforms.validators import DataRequired  # , FileRequired, FileAllowed
